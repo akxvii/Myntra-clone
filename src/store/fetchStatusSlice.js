@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit"
 
-const fectchStatusSlice = createSlice({
+const fetchStatusSlice = createSlice({
   name: `fetchStatus`,
   initialState: {
     fetchDone: false, // false: `PENDING` and true: `DONE`
@@ -8,18 +8,18 @@ const fectchStatusSlice = createSlice({
   },
   reducers: {
     markFetchDone: (state) => {
-      return state.fetchDone = true;
+      state.fetchDone = true;
     },
     markFetchingStarted: (state) => {
-      return state.currentlyFetching = true;
+      state.currentlyFetching = true;
     },
     markFetchingFinished: (state) => {
-      return state.currentlyFetching = false;
+      state.currentlyFetching = false;
     }
   }
 })
 
-export const fectchStatusActions = fectchStatusSlice.actions;
+export const fetchStatusActions = fetchStatusSlice.actions;
 
-export default fectchStatusSlice;
+export default fetchStatusSlice;
 
