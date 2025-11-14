@@ -1,13 +1,19 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bagActions } from "../store/BagSlice";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 const HomeItem = ({ item }) => {
   const dispatch = useDispatch();
+  const bagItems = useSelector((store) => store.bag);
+  const elementFound = bagItems.indexOf(item.id) >= 0;
 
   const handleAddToBag = () => {
     dispatch(bagActions.addToBag(item.id));
+  };
+
+  const handleRemove = () => {
+    dispatch(bagActions.removeFromBag(item.id));
   };
 
   return (
@@ -23,18 +29,26 @@ const HomeItem = ({ item }) => {
         <span className="original-price">Rs {item.original_price}</span>
         <span className="discount">({item.discount_percentage}% OFF)</span>
       </div>
-      <button
-        type="button"
-        className="btn btn-success btn-add-bag"
-        onClick={handleAddToBag}
-      >
-        <IoIosAddCircleOutline className="addButton" />
-        Add to Bag
-      </button>
-      <button type="button" className="btn btn-danger btn-add-bag">
-        <RiDeleteBin6Line className="addButton" />
-        Remove
-      </button>
+
+      {elementFound ? (
+        <button
+          type="button"
+          className="btn btn-danger btn-add-bag"
+          onClick={handleRemove}
+        >
+          <RiDeleteBin6Line className="addButton" />
+          Remove
+        </button>
+      ) : (
+        <button
+          type="button"
+          className="btn btn-success btn-add-bag"
+          onClick={handleAddToBag}
+        >
+          <IoIosAddCircleOutline className="addButton" />
+          Add to Bag
+        </button>
+      )}
     </div>
   );
 };
