@@ -2,8 +2,11 @@ import { SlHandbag } from "react-icons/sl";
 import { IoPerson } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const bag = useSelector((store) => store.bag);
+
   return (
     <header>
       <div className="logo_container">
@@ -46,7 +49,7 @@ const Header = () => {
         <Link className="action_container bag" to="/bag">
           <SlHandbag size={18} />
           <span className="action_name">Bag</span>
-          <span className="bag-item-count">0</span>
+          <span className="bag-item-count">{bag.length}</span>
         </Link>
       </div>
     </header>

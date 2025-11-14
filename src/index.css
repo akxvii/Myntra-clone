@@ -11,6 +11,8 @@ header {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #b6b1b1;
+  padding-bottom: 3px;
+  
 }
 .myntra_home {
   height: 45px;
@@ -393,4 +395,14 @@ a.action_container:link {
   width: 14px;
   height: 14px;
   cursor: pointer;
+}
+
+.spinner {
+  margin : 325px 0px
+}
+
+.addButton {
+  margin-right: 15px;
+  font-size: 20px;
+  
 }

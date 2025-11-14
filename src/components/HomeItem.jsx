@@ -1,4 +1,15 @@
+import { useDispatch } from "react-redux";
+import { bagActions } from "../store/BagSlice";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { RiDeleteBin6Line } from "react-icons/ri";
+
 const HomeItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToBag = () => {
+    dispatch(bagActions.addToBag(item.id));
+  };
+
   return (
     <div className="item-container">
       <img className="item-image" src={item.image} alt="item image" />
@@ -13,10 +24,16 @@ const HomeItem = ({ item }) => {
         <span className="discount">({item.discount_percentage}% OFF)</span>
       </div>
       <button
-        className="btn-add-bag"
-        onClick={() => console.log("item was clicked")}
+        type="button"
+        className="btn btn-success btn-add-bag"
+        onClick={handleAddToBag}
       >
+        <IoIosAddCircleOutline className="addButton" />
         Add to Bag
+      </button>
+      <button type="button" className="btn btn-danger btn-add-bag">
+        <RiDeleteBin6Line className="addButton" />
+        Remove
       </button>
     </div>
   );

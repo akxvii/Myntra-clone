@@ -4,7 +4,7 @@ const LoadingSpinner = () => {
       <div
         className="spinner-border"
         role="status"
-        style={{ width: "3rem", height: "3rem" }}
+        style={{ width: "4rem", height: "4rem" }}
       >
         <span className="visually-hidden">Loading...</span>
       </div>
